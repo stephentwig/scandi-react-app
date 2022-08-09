@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function ProductList() {
@@ -8,14 +8,11 @@ export default function ProductList() {
     product_ids: [],
   });
 
-  React.useEffect(
-    function () {
-      fetch("https://scandiweb.ipublishinghouse.com/app/api/v1/getProduct.php")
-        .then((response) => response.json())
-        .then((data) => setAllProducts(data));
-    },
-    [allProducts]
-  );
+  useEffect(function() {
+    fetch("https://scandiweb.ipublishinghouse.com/app/api/v1/getProduct.php")
+      .then((response) => response.json())
+      .then((data) => setAllProducts(data));
+  }, []);
 
   function handleDeleteClick() {
     console.log("handleDeleteClick", selectedProducts);
@@ -48,7 +45,24 @@ export default function ProductList() {
         requestOptions
       )
         .then((response) => response.text())
-        .then((result) => console.log(result))
+        .then((result) => {
+          console.log(result);
+
+          const productIds = selectedProducts.product_ids;
+
+          // Filter out all the deleted IDs (leave the ones that are not deleted)
+          const newProductList = allProducts.filter((product) => {
+            if (productIds.includes(product.id)) {
+              return false;
+            } else {
+              return true;
+            }
+          });
+
+          // Empty out the selected Product list
+          setSelectedProducts({ product_ids: [] });
+          setAllProducts(newProductList);
+        })
         .catch((error) => console.log("error", error));
     }
   }
@@ -126,11 +140,7 @@ export default function ProductList() {
         </div>
         {/* <!-- beneath the header -->*/}
 
-        <form
-          action="app\api\v1\deleteProduct.php"
-          id="product_list_form"
-          method="post"
-        >
+        <form action="" id="product_list_form" method="post">
           <div className="flex-container">
             {/* ProductGrid */}
 
