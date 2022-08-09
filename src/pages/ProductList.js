@@ -8,15 +8,13 @@ export default function ProductList() {
     product_ids: [],
   });
 
-  useEffect(function() {
+  useEffect(function () {
     fetch("https://scandiweb.ipublishinghouse.com/app/api/v1/getProduct.php")
       .then((response) => response.json())
       .then((data) => setAllProducts(data));
   }, []);
 
   function handleDeleteClick() {
-    console.log("handleDeleteClick", selectedProducts);
-
     if (selectedProducts.product_ids.length > 0) {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -77,7 +75,6 @@ export default function ProductList() {
       [name]: selectedProduct_ids,
     };
     setSelectedProducts(newSelectedProducts);
-    console.log(newSelectedProducts, "handleCheckboxChange");
   }
 
   const productElementGrid = allProducts.map((product) => {

@@ -23,7 +23,6 @@ export default function ProductAdd() {
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
     setFormData((prevData) => {
-      console.log("handleChange", prevData);
       return {
         ...prevData,
         [name]: type === "checkbox" ? checked : value,
@@ -35,7 +34,6 @@ export default function ProductAdd() {
     //load the other pages
     const { name, value, type, checked } = event.target;
     setFormData((prevData) => {
-      console.log("onSelectChange", prevData);
       return {
         ...prevData,
         [name]: type === "checkbox" ? checked : value,
@@ -48,7 +46,6 @@ export default function ProductAdd() {
 
     const { name, value, type, checked, customValidity } = event.target;
     setFormData((prevData) => {
-      console.log("handleInvalid", prevData);
       return {
         ...prevData,
         [name]: type === "checkbox" ? checked : value,
@@ -58,7 +55,6 @@ export default function ProductAdd() {
 
   function handleInvalidFunc(inputNotification) {
     setFormData((prevData) => {
-      console.log("handleInvalid", prevData);
       return {
         ...prevData,
         [prevData.notification]: inputNotification,
@@ -70,7 +66,6 @@ export default function ProductAdd() {
     // (event) => event.target.setCustomValidity("")
     const { name, value, type, checked, customValidity } = event.target;
     setFormData((prevData) => {
-      console.log("handleOnInput", prevData);
       return {
         ...prevData,
         [name]: type === "checkbox" ? checked : value,
@@ -82,7 +77,6 @@ export default function ProductAdd() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    console.log(formData, "on submit");
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
