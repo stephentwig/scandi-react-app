@@ -9,10 +9,8 @@ export default function ProductList() {
   });
 
   React.useEffect(
-    function() {
-      fetch(
-        "https://scandiwebapp.000webhostapp.com/scandiweb_react_app_api/api/v1/getProduct.php"
-      )
+    function () {
+      fetch("https://scandiweb.ipublishinghouse.com/app/api/v1/getProduct.php")
         .then((response) => response.json())
         .then((data) => setAllProducts(data));
     },
@@ -46,7 +44,7 @@ export default function ProductList() {
       };
 
       fetch(
-        "https://scandiwebapp.000webhostapp.com/scandiweb_react_app_api/api/v1/deleteProduct.php",
+        "https://scandiweb.ipublishinghouse.com/app/api/v1/deleteProduct.php",
         requestOptions
       )
         .then((response) => response.text())

@@ -96,7 +96,7 @@ export default function ProductAdd() {
     };
 
     fetch(
-      "https://scandiwebapp.000webhostapp.com/scandiweb_react_app_api/api/v1/saveProduct.php",
+      "https://scandiweb.ipublishinghouse.com/app/api/v1/saveProduct.php",
       requestOptions
     )
       .then((response) => response.text())
@@ -115,6 +115,7 @@ export default function ProductAdd() {
             id="product_form"
             method="post"
             onSubmit={handleSubmit}
+            className="form-control"
           >
             <div className="fixed-header">
               <div className="row">
