@@ -5,10 +5,10 @@ export default function Book(props) {
     <div className="">
       Book
       <div className="row">
-        <div className="col-xs-1">
+        <div className="col-sm-1">
           <label htmlFor="weight">Weight (KG)</label>
         </div>
-        <div className="col-xs-5">
+        <div className="col-sm-5">
           <input
             type="number"
             id="weight"
@@ -22,7 +22,7 @@ export default function Book(props) {
             required
           />
         </div>
-        <div className="col-xs-6"></div>
+        <div className="col-sm-6"></div>
       </div>
       <div>
         <b>Please, provide weight in kg</b>

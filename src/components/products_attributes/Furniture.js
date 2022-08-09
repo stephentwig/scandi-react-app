@@ -5,10 +5,10 @@ export default function Furniture(props) {
     <div className="">
       Furniture
       <div className="row">
-        <div className="col-xs-1">
+        <div className="col-sm-1">
           <label htmlFor="height">Height (CM)</label>
         </div>
-        <div className="col-xs-5">
+        <div className="col-sm-5">
           <input
             type="number"
             id="height"
@@ -21,13 +21,14 @@ export default function Furniture(props) {
             required
           />
         </div>
-        <div className="col-xs-6"></div>
+        <div className="col-sm-6"></div>
       </div>
+      <br />
       <div className="row">
-        <div className="col-xs-1">
+        <div className="col-sm-1">
           <label htmlFor="width">Width (CM)</label>
         </div>
-        <div className="col-xs-5">
+        <div className="col-sm-5">
           <input
             type="number"
             id="width"
@@ -40,13 +41,14 @@ export default function Furniture(props) {
             required
           />
         </div>
-        <div className="col-xs-6"></div>
+        <div className="col-sm-6"></div>
       </div>
+      <br />
       <div className="row">
-        <div className="col-xs-1">
+        <div className="col-sm-1">
           <label htmlFor="length">Length (CM)</label>
         </div>
-        <div className="col-xs-5">
+        <div className="col-sm-5">
           <input
             type="number"
             id="length"
@@ -59,7 +61,7 @@ export default function Furniture(props) {
             required
           />
         </div>
-        <div className="col-xs-6"></div>
+        <div className="col-sm-6"></div>
       </div>
       <div>
         <b>Please, provide dimensions in CM</b>

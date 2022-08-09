@@ -5,10 +5,10 @@ export default function DVD(props) {
     <div className="">
       DVD
       <div className="row">
-        <div className="col-xs-1">
+        <div className="col-sm-1">
           <label htmlFor="size">Size (MB)</label>
         </div>
-        <div className="col-xs-5">
+        <div className="col-sm-5">
           <input
             type="number"
             id="size"
@@ -21,7 +21,7 @@ export default function DVD(props) {
             required
           />
         </div>
-        <div className="col-xs-6"></div>
+        <div className="col-sm-6"></div>
       </div>
       <div>
         <b>Please, provide size in MB</b>

@@ -45,27 +45,26 @@ export default function ProductAdd() {
   function handleInvalid(event) {
     //() => this.setCustomValidity("Please, provide the data of indicated type");
 
-    const { name, value, type, checked } = event.target;
+    const { name, value, type, checked, customValidity } = event.target;
     setFormData((prevData) => {
       console.log("handleInvalid", prevData);
       return {
         ...prevData,
         [name]: type === "checkbox" ? checked : value,
-        [event.target.customValidity]:
-          "Please, provide the data of indicated type",
+        [customValidity]: "Please, provide the data of indicated type",
       };
     });
   }
 
   function handleOnInput(event) {
     // (event) => event.target.setCustomValidity("")
-    const { name, value, type, checked } = event.target;
+    const { name, value, type, checked, customValidity } = event.target;
     setFormData((prevData) => {
       console.log("handleOnInput", prevData);
       return {
         ...prevData,
         [name]: type === "checkbox" ? checked : value,
-        [event.target.customValidity]: "",
+        [customValidity]: "",
       };
     });
   }
@@ -115,7 +114,6 @@ export default function ProductAdd() {
             id="product_form"
             method="post"
             onSubmit={handleSubmit}
-            className="form-control"
           >
             <div className="fixed-header">
               <div className="row">
@@ -147,10 +145,10 @@ export default function ProductAdd() {
             </div>
 
             <div className="row">
-              <div className="col-xs-1">
+              <div className="col-sm-1">
                 <label htmlFor="sku">SKU</label>
               </div>
-              <div className="col-xs-5">
+              <div className="col-sm-5">
                 <input
                   type="text"
                   id="sku"
@@ -161,14 +159,14 @@ export default function ProductAdd() {
                   required
                 />
               </div>
-              <div className="col-xs-6	"></div>
+              <div className="col-sm-6	"></div>
             </div>
             <br />
             <div className="row">
-              <div className="col-xs-1">
+              <div className="col-sm-1">
                 <label htmlFor="name">Name</label>
               </div>
-              <div className="col-xs-5">
+              <div className="col-sm-5">
                 <input
                   type="text"
                   id="name"
@@ -179,14 +177,14 @@ export default function ProductAdd() {
                   required
                 />
               </div>
-              <div className="col-xs-6	"></div>
+              <div className="col-sm-6	"></div>
             </div>
             <br />
             <div className="row">
-              <div className="col-xs-1">
+              <div className="col-sm-1">
                 <label htmlFor="price">Price ($)</label>
               </div>
-              <div className="col-xs-5">
+              <div className="col-sm-5">
                 <input
                   type="number"
                   id="price"
@@ -199,15 +197,15 @@ export default function ProductAdd() {
                   required
                 />
               </div>
-              <div className="col-xs-6	"></div>
+              <div className="col-sm-6	"></div>
             </div>
             <br />
 
             <div className="row">
-              <div className="col-xs-1">
+              <div className="col-sm-1">
                 <label htmlFor="productType">Type Switcher</label>
               </div>
-              <div className="col-xs-5">
+              <div className="col-sm-5">
                 <select
                   id="productType"
                   name="productType"
@@ -229,7 +227,7 @@ export default function ProductAdd() {
                   </option>
                 </select>
               </div>
-              <div className="col-xs-6	"></div>
+              <div className="col-sm-6"></div>
             </div>
             <br />
             <div id="dynamic_product_attribute">
