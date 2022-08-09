@@ -15,6 +15,7 @@ export default function ProductAdd() {
     width: "",
     length: "",
     weight: "",
+    notification: "",
   });
 
   const navigate = useNavigate();
@@ -51,7 +52,16 @@ export default function ProductAdd() {
       return {
         ...prevData,
         [name]: type === "checkbox" ? checked : value,
-        [customValidity]: "Please, provide the data of indicated type",
+      };
+    });
+  }
+
+  function handleInvalidFunc(inputNotification) {
+    setFormData((prevData) => {
+      console.log("handleInvalid", prevData);
+      return {
+        ...prevData,
+        [prevData.notification]: inputNotification,
       };
     });
   }

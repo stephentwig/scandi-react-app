@@ -1,6 +1,12 @@
 import React from "react";
 
 export default function Furniture(props) {
+  let notification = "Please, provide the data of indicated type";
+  let notificationElement = (
+    <div className="text-danger" role="alert">
+      {notification}
+    </div>
+  );
   return (
     <div className="">
       Furniture
@@ -21,7 +27,9 @@ export default function Furniture(props) {
             required
           />
         </div>
-        <div className="col-sm-6"></div>
+        <div className="col-sm-6">
+          {props.getFurnitureHeight === "" && notificationElement}
+        </div>
       </div>
       <br />
       <div className="row">
@@ -41,7 +49,9 @@ export default function Furniture(props) {
             required
           />
         </div>
-        <div className="col-sm-6"></div>
+        <div className="col-sm-6">
+          {props.getFurnitureWidth === "" && notificationElement}
+        </div>
       </div>
       <br />
       <div className="row">
@@ -61,7 +71,9 @@ export default function Furniture(props) {
             required
           />
         </div>
-        <div className="col-sm-6"></div>
+        <div className="col-sm-6">
+          {props.getFurnitureLength === "" && notificationElement}
+        </div>
       </div>
       <div>
         <b>Please, provide dimensions in CM</b>
