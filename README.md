@@ -1,4 +1,9 @@
 # Getting Started with Create React App
+- Screenshot of the UI - Product List
+ ![Picture of the product-list ]( https://bitbucket.org/stephentwig/scandiweb/raw/2a1c1c45259f2cebc51a54ec468e33556d63216b/scandi-react-app/public/Product_list_08.png) 
+ 
+- Screenshot of the UI - Product Add
+ ![Picture of the product-add ]( https://bitbucket.org/stephentwig/scandiweb/raw/2a1c1c45259f2cebc51a54ec468e33556d63216b/scandi-react-app/public/Product_add_08.png) 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
