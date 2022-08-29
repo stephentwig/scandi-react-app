@@ -5,6 +5,7 @@ import Furniture from "../components/products_attributes/Furniture";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function ProductAdd() {
+  let notificationElement = {};
   const [formData, setFormData] = useState({
     sku: "",
     name: "",
@@ -17,6 +18,8 @@ export default function ProductAdd() {
     weight: "",
     notification: "",
   });
+
+  const [formDataResponse, setFormDataResponse] = useState({});
 
   const navigate = useNavigate();
 
@@ -42,8 +45,6 @@ export default function ProductAdd() {
   }
 
   function handleInvalid(event) {
-    //() => this.setCustomValidity("Please, provide the data of indicated type");
-
     const { name, value, type, checked, customValidity } = event.target;
     setFormData((prevData) => {
       return {
@@ -53,17 +54,7 @@ export default function ProductAdd() {
     });
   }
 
-  function handleInvalidFunc(inputNotification) {
-    setFormData((prevData) => {
-      return {
-        ...prevData,
-        [prevData.notification]: inputNotification,
-      };
-    });
-  }
-
   function handleOnInput(event) {
-    // (event) => event.target.setCustomValidity("")
     const { name, value, type, checked, customValidity } = event.target;
     setFormData((prevData) => {
       return {
@@ -98,15 +89,18 @@ export default function ProductAdd() {
       redirect: "follow",
     };
 
-    fetch(
-      "https://scandiweb.ipublishinghouse.com/app/api/v1/saveProduct.php",
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+    fetch("https://scandiweb.ipublishinghouse.com/create", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        setFormDataResponse(result);
 
-    navigate("/");
+        if ("success_message" in result) {
+          navigate("/");
+        } else {
+          console.log(notificationElement, "SKU already exists");
+        }
+      })
+      .catch((error) => console.log("error", error));
   }
 
   return (
@@ -163,7 +157,11 @@ export default function ProductAdd() {
                   required
                 />
               </div>
-              <div className="col-sm-6	"></div>
+              <div className="col-sm-6">
+                <div className="text-danger" role="alert">
+                  {formDataResponse.error_message}
+                </div>
+              </div>
             </div>
             <br />
             <div className="row">
@@ -181,7 +179,7 @@ export default function ProductAdd() {
                   required
                 />
               </div>
-              <div className="col-sm-6	"></div>
+              <div className="col-sm-6"></div>
             </div>
             <br />
             <div className="row">
@@ -201,7 +199,7 @@ export default function ProductAdd() {
                   required
                 />
               </div>
-              <div className="col-sm-6	"></div>
+              <div className="col-sm-6"></div>
             </div>
             <br />
 
@@ -216,6 +214,7 @@ export default function ProductAdd() {
                   onChange={handleSelectChange}
                   value={formData.productType}
                   className="form-control"
+                  required
                 >
                   <option id="" name="" value="">
                     Select A Product

@@ -1,13 +1,7 @@
 import React from "react";
+import Notification from "../Notification";
 
 export default function DVD(props) {
-  let notification = "Please, provide the data of indicated type";
-  let notificationElement = (
-    <div className="text-danger" role="alert">
-      {notification}
-    </div>
-  );
-
   return (
     <div className="">
       DVD
@@ -29,7 +23,9 @@ export default function DVD(props) {
           />
         </div>
         <div className="col-sm-6">
-          {props.getDVDValue === "" && notificationElement}
+          {props.getDVDValue === "" && (
+            <Notification message="Please, provide the data of indicated type" />
+          )}
         </div>
       </div>
       <div>

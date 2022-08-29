@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ProductGrid from "../components/ProductGrid";
 
 export default function ProductList() {
   const [allProducts, setAllProducts] = useState([]);
@@ -8,8 +9,8 @@ export default function ProductList() {
     product_ids: [],
   });
 
-  useEffect(function () {
-    fetch("https://scandiweb.ipublishinghouse.com/app/api/v1/getProduct.php")
+  useEffect(function() {
+    fetch("https://scandiweb.ipublishinghouse.com/")
       .then((response) => response.json())
       .then((data) => setAllProducts(data));
   }, []);
@@ -38,14 +39,9 @@ export default function ProductList() {
         redirect: "follow",
       };
 
-      fetch(
-        "https://scandiweb.ipublishinghouse.com/app/api/v1/deleteProduct.php",
-        requestOptions
-      )
+      fetch("https://scandiweb.ipublishinghouse.com/delete", requestOptions)
         .then((response) => response.text())
         .then((result) => {
-          console.log(result);
-
           const productIds = selectedProducts.product_ids;
 
           // Filter out all the deleted IDs (leave the ones that are not deleted)
@@ -79,35 +75,22 @@ export default function ProductList() {
 
   const productElementGrid = allProducts.map((product) => {
     return (
-      <div className="panel panel-default" key={product.id}>
-        <input
-          type="checkbox"
-          className="delete-checkbox"
-          id={product.id}
-          name="product_ids"
-          onChange={handleCheckboxChange}
-          value={product.id}
-        />
-        <br />
-
-        {product.sku}
-        <br />
-
-        {product.name}
-        <br />
-
-        {product.price}
-        <br />
-
-        {product.product_attribute_value}
-      </div>
+      <ProductGrid
+        key={product.id}
+        id={product.id}
+        sku={product.sku}
+        name={product.name}
+        price={product.price}
+        attribute={product.product_attribute_value}
+        runHandleCheckboxChange={handleCheckboxChange}
+      />
     );
   });
 
   return (
     <div>
       <div className="container">
-        <div className=".fixed-header">
+        <div className="fixed-header">
           <div className="row">
             <div className="col-md-7">
               <h1>

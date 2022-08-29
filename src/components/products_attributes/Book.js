@@ -1,12 +1,7 @@
 import React from "react";
+import Notification from "../Notification";
 
 export default function Book(props) {
-  let notification = "Please, provide the data of indicated type";
-  let notificationElement = (
-    <div className="text-danger" role="alert">
-      {notification}
-    </div>
-  );
   return (
     <div className="">
       <div className="row">
@@ -19,8 +14,7 @@ export default function Book(props) {
             id="weight"
             name="weight"
             className="form-control"
-            onChange={props.runHandleChange} //anonymous function
-            // onChange={(event) => props.runHandleChange(event.target.value)}
+            onChange={props.runHandleChange}
             value={props.getBookValue}
             onInvalid={props.runHandleInvalid}
             onInput={props.runHandleOnInput}
@@ -28,7 +22,9 @@ export default function Book(props) {
           />
         </div>
         <div className="col-sm-6">
-          {props.getBookValue === "" && notificationElement}
+          {props.getBookValue === "" && (
+            <Notification message="Please, provide the data of indicated type" />
+          )}
         </div>
       </div>
       <div>

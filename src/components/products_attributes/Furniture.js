@@ -1,12 +1,7 @@
 import React from "react";
+import Notification from "../Notification";
 
 export default function Furniture(props) {
-  let notification = "Please, provide the data of indicated type";
-  let notificationElement = (
-    <div className="text-danger" role="alert">
-      {notification}
-    </div>
-  );
   return (
     <div className="">
       Furniture
@@ -28,7 +23,9 @@ export default function Furniture(props) {
           />
         </div>
         <div className="col-sm-6">
-          {props.getFurnitureHeight === "" && notificationElement}
+          {props.getFurnitureHeight === "" && (
+            <Notification message="Please, provide the data of indicated type" />
+          )}
         </div>
       </div>
       <br />
@@ -50,7 +47,9 @@ export default function Furniture(props) {
           />
         </div>
         <div className="col-sm-6">
-          {props.getFurnitureWidth === "" && notificationElement}
+          {props.getFurnitureWidth === "" && (
+            <Notification message="Please, provide the data of indicated type" />
+          )}
         </div>
       </div>
       <br />
@@ -72,7 +71,9 @@ export default function Furniture(props) {
           />
         </div>
         <div className="col-sm-6">
-          {props.getFurnitureLength === "" && notificationElement}
+          {props.getFurnitureLength === "" && (
+            <Notification message="Please, provide the data of indicated type" />
+          )}
         </div>
       </div>
       <div>
